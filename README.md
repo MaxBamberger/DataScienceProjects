@@ -1,5 +1,5 @@
 # DataScienceProjects
-Welcome! This is a collection of great science projects I have completed for clients or as part of my independent research. More to come as I clean up some projects
+Welcome! This is a collection of great machine learning projects I have completed for clients or as part of my independent research. More to come as I clean up some projects
 
 ## Table of Contents
  - [Movie Recommender System](https://github.com/MaxBamberger/DataScienceProjects/tree/master/movie_recommender_system) (a recommendation system that produces user recommendations based on predicted ratings and processes new movies / users as they onboard.
@@ -10,5 +10,6 @@ Welcome! This is a collection of great science projects I have completed for cli
  - Predicting movie success using a GradientBoosting classifier and Latent Dirichlet Allocation (LDA) to Topic-Model the plot-synopsis
  - Detecting Fraud using XGBoost / Random Forest 
  - Predicting Customer Churn amongst users of a ridesharing app  
+ - Image Processing and classification using sci-kit image
  
 
