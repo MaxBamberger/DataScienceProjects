@@ -10,7 +10,7 @@ The **ratings data** can be found in `data/training.csv`. The users' ratings hav
 
 **additional metadata** can be found by downloading [The Movies Dataset](https://www.kaggle.com/rounakbanik/the-movies-dataset/version/7).
 
-#The Solution: 
+## The Solution: 
 
 Using a [Non-Negative Matrx Factorization](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization) technique (run via pyspark) user-movie ratings are inferred based user's similarity to other users and movies's similarity to other movies. 
 
