@@ -7,7 +7,11 @@ Hollywood is a ruthless business. Success means becoming rich and famous. But th
 
 Lots of people complain that "movies these days are so formuliac".. Well, there may be some truth to that statement. I've set out to create a machine learning classification system that when trained with over 7000+ films throughout history -- gets to the bottom of what this formula is.
 
-### About the model:
+## Try it out! 
+You can [make a prediction](http://0.0.0.0:8081/) with my model 
+(this is a web-app I put together for demonstration. I never claimed to be a great web-developer :))
+
+### About the model itself:
  - Main classifier algorithm: GradientBoosting
  - Plot Synopsis text: Latent Drichlet Allocation (Topic Modeling)
 
