@@ -18,7 +18,8 @@ This works decently well to fill in recommendations, however it cannot be applie
 
 The test data streams in via an API. To retreive new test data and demonstrate -- 
 
-## Note on running the script
-`recommender.py` script relies on spark, you may want to use the script run_on_spark.sh to execute the code 
+## Note on running the solution
+`recommender.py` script relies on spark, you may want to use the script `run_on_spark.sh` to execute the code or 
 
 In a terminal, use: run_on_spark.sh src/run.py with arguments to run the recommender.
+To run in a notebook, use: `jupyspark.sh` to open a jupyter notebook
