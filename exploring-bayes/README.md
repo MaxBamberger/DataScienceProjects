@@ -1,4 +1,4 @@
-## Goals
+## Playing with Bayes Theory
 Explore
 - The trade-offs between the power of a test, the significance,
   sample size and detectable effect size
