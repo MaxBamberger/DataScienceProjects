@@ -11,11 +11,13 @@ Lots of people complain that "movies these days are so formuliac".. Well, there 
  - Main classifier algorithm: GradientBoosting
  - Plot Synopsis text: Latent Drichlet Allocation (Topic Modeling)
 
+(More to come)
+
 ### Model scoring:
 
-#### My confusion Matrix:
+ - My confusion Matrix:
 ![image](images/cm.png)
 
 ### Feauture importance:
 
-
+(More to come)
