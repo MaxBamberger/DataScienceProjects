@@ -1,4 +1,4 @@
-# Fame or Flop: Predicting Film success using Feature Engineering, Natural Language Processing (LDA) and GradientBoosting
+# Fame or Flop: Predicting a Film's Success Using historical data, Natural Language Processing (LDA) and Machine Learning
 
 Hollywood is a ruthless business that, if played right, can make you rich and famous. But the stakes are high: 
 70% of movies that are made have a negative ROI.. Meaning they lose money for the original production studios
