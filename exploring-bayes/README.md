@@ -6,5 +6,5 @@ Explore
   based on a prior distribution and a likelihood function
 
 To Demonstrate how Bayesian Updating works, I created two object oriented simulations:
- - [src/Bayes.py](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/src/bayes.py. The `Bayes` class that is able to handle Bayesian updates in the discrete case. A prior is defined and at each data point, a likelihood is computed and the prior is updated to give the posterior. You can play around with priors and see how it affects the posterior outcome by using `dice.py`.
- - [src/biased_coin.py](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/src/biased_coin.py). We have a coin. We would like to know how biased it is. The bias is a value between 0 and 1 of the probability of flipping heads. Our prior is that all biases are equally likely.
+ - [bayes.py](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/src/bayes.py). The `Bayes` class that is able to handle Bayesian updates in the discrete case. A prior is defined and at each data point, a likelihood is computed and the prior is updated to give the posterior. You can play around with priors and see how it affects the posterior outcome by using `src/dice.py`.
+ - [biased_coin.py](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/src/biased_coin.py). We have a coin. We would like to know how biased it is. The bias is a value between 0 and 1 of the probability of flipping heads. Our prior is that all biases are equally likely.
