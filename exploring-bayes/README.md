@@ -9,4 +9,5 @@ To Demonstrate how Bayesian Updating works, I created two object oriented simula
  - [bayes.py](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/src/bayes.py). The `Bayes` class that is able to handle Bayesian updates in the discrete case. A prior is defined and at each data point, a likelihood is computed and the prior is updated to give the posterior. You can play around with priors and see how it affects the posterior outcome by using `src/dice.py`.
  - [biased_coin.py](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/src/biased_coin.py). We have a coin. We would like to know how biased it is. The bias is a value between 0 and 1 of the probability of flipping heads. Our prior is that all biases are equally likely.
 
-[Bayesian Power](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/bayes-test.ipynb), you can use Bayes to approach an A/B hypothesis test in a different way...
+## Bayesian Power for A/B testing
+In [Bayesian Power](https://github.com/MaxBamberger/DataScienceProjects/blob/master/exploring-bayes/bayes-test.ipynb) I demonstrate how you can use Bayes to approach an A/B hypothesis test in a different way...
