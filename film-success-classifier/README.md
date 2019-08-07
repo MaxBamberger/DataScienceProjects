@@ -13,6 +13,8 @@ You can try [making a prediction](http://54.159.9.172:8080/) on a future movie w
 (Put together for demonstration purposes only. I never claimed to be a great web-developer :))
 
 ### About the model itself:
+Success is defined as a movie that has a positive profit. Profit is calculated as an industry 'rule of thumb' metric: 
+```Profit = Revenue - 3 * Production_Budget```
 The main success/failure and predicted probability is performed with a Gradient Boosting algorithm, however textual data such as the plot synopsis, tagline etc. is fed to a Latent Drichlet Allocation for Topic Modeling. Typically the best Coherence value for training data of this size is found with just 20 topics. These topics (and each movie's % contribution to them) are fed back into the Boosting classifier as new features. The General pipeline is as follows:
  - New features are engineering 
  - Main classifier algorithm: GradientBoosting
@@ -21,13 +23,14 @@ The main success/failure and predicted probability is performed with a Gradient 
 
 ### Model scoring:
 
- - My confusion Matrix:
+ - My confusion Matrix (as you can see, failures are quite common):
 ![image](images/cm.png)
 
 ### Feauture importance:
 
 ### Where does the data come from?
  - Data is ingested through two APIs:
-    - asdfasfas
-    - asdfasdf
+    - [Open Movie Database (OMDB) API](http://omdbapi.com/) Contains useful metadata about the movie including directors, actors, writers and awards
+    - [The Movie Database (TMBD) API](https://www.themoviedb.org/documentation/api) Contains some useful fields including budget and revenue information
+ - Any titles not of the category 'movie', or have missing revenue/budget information are scrapped
  - I've created some handy tools for requesting the APIs and ingesting the data (more to come)
