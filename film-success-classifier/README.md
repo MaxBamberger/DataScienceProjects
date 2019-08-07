@@ -28,6 +28,6 @@ The main success/failure and predicted probability is performed with a Gradient 
 
 ### Where does the data come from?
  - Data is ingested through two APIs:
-    -- asdfasfas
-    -- asdfasdf
+    - asdfasfas
+    - asdfasdf
  - I've created some handy tools for requesting the APIs and ingesting the data (more to come)
