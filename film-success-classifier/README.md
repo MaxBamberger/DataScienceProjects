@@ -13,9 +13,9 @@ You can try [making a prediction](http://54.159.9.172:8080/) on a future movie w
 (Put together for demonstration purposes only. I never claimed to be a great web-developer :))
 
 ### About the model itself:
-Success is defined as a movie that has a positive profit. Profit is calculated as an industry 'rule of thumb' metric: 
+Success is defined as a movie that has a positive profit. Profit is calculated as an industry 'rule of thumb' metric 3 times the production budget, to accomodate for distribution costs that come off of the top line: 
 
-```Profit = Revenue - 3 * Production_Budget```
+```Profit = Revenue - (3 * Production_Budget)```
 
 The main success/failure and predicted probability is performed with a Gradient Boosting algorithm, however textual data such as the plot synopsis, tagline etc. is fed to a Latent Drichlet Allocation for Topic Modeling. Typically the best Coherence value for training data of this size is found with just 20 topics. These topics (and each movie's % contribution to them) are fed back into the Boosting classifier as new features. The General pipeline is as follows:
  - New features are engineering 
@@ -24,9 +24,15 @@ The main success/failure and predicted probability is performed with a Gradient 
 
 
 ### Model scoring:
+ - Receiver Operating Characteristic (ROC) curve. as you can see is decently accurate but there is room for improvement: 
 
- - My confusion Matrix (as you can see, failures are quite common):
+ - Cross-validated confusion Matrix (how often false-positives / false-negatives vs. correct predictions occur) :
 ![image](images/cm.png)
+
+ - Accuracy Score: 0.72
+ - ROC AUC ~ 0.7789 
+ - Recall mean ~ 0.631 
+ - Precision Mean ~ 0.590
 
 ### Feauture importance:
 
