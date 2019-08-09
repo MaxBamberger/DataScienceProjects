@@ -9,7 +9,7 @@ Hollywood is a ruthless business. Achieving success in industry this means every
 Lot's of people complain that "movies these days are so formuliac".. Well, there may be some truth to that statement. I've set out to create a machine learning classification system that -- when trained with over 7000+ films throughout history -- gets to the bottom of what this formula is.
 
 ## Try it out! 
-You can try [making a prediction](http://54.159.9.172:8080/) on a future movie with the web-app version of my model 
+You can try [making a prediction](http://3.224.227.110:8080/) on a future movie with the web-app version of my model 
 (Put together for demonstration purposes only. I never claimed to be a great web-developer :))
 
 ### About the model itself:
