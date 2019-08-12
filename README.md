@@ -8,7 +8,6 @@ Welcome! This is a collection of great machine learning projects I have complete
  - [Predicting Boston Home Prices](https://github.com/MaxBamberger/DataScienceProjects/blob/master/boston-home-prices/Boston-Home-Prices.ipynb) using three different Boosting Regression models. Demonstrate the effect that Learning Rate has on Boosting Algorithms specifically.
  
  ## Coming Soon
- - 
  - Detecting Fraud using XGBoost / Random Forest 
  - Predicting Customer Churn amongst users of a ridesharing app  
  - Image Processing and classification using sci-kit image
