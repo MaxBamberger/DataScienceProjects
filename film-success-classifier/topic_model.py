@@ -24,10 +24,28 @@ import pickle
 import sys
 
 class TopicModel:
+    '''
+    TopicModel Class.
+    Main engine for Laten Drichlet Allocation for Topic Modeling. 
+    Typically called build_model2.py to add percentage contribution to topic scores.
 
+    Type:  object
+
+    inputs
+    ------
+    df: pandas dataframe -- main film dataframe
+
+    methods
+    -------
+    __init__(df)
+    _n_gram()
+    make_lda_model()
+    perc_contribution_score()
+    
+    '''
     def __init__(self, df, min_tok_len = 1):
         '''
-        Extract plot text and turn into a list of lists of tokens
+        Extract plot text and turn into a list of lists of tokens as initilization 
         '''
         print('---Initializing Topic Modeling Object')
 
@@ -77,8 +95,8 @@ class TopicModel:
 
     def make_lda_model(self,num_topics=11):
         '''
-        build an optimized LDA Mallet model.
-        Returns coherence score for sanity checking (EDA has revealed the target coherence to be ~0.39)
+        Build an optimized LDA model.
+        prints a coherence score for sanity checking (EDA has revealed the target coherence to be ~0.39)
         '''
         print('  - Building LDA Model model with {} topics'.format(num_topics))
 
@@ -107,7 +125,9 @@ class TopicModel:
         self.coherence_score = coherence_score
 
     def perc_contribution_score(self):
-
+        '''
+        Apply percentage contribution score to each film 
+        '''
         print('  - Applying a contribution score to each film from original dataset')
         # Init output
         first_topic_df = pd.DataFrame()
