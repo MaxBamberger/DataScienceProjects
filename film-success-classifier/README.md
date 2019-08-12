@@ -43,7 +43,7 @@ The main success/failure and predicted probability is performed with a Gradient 
  - Precision Mean ~ 0.590
 
 ### Feauture importance:
-
+![image](images/feature_imp.png)
 ### Where does the data come from?
  - Data is ingested through two APIs:
     - [Open Movie Database (OMDB) API](http://omdbapi.com/) Contains useful metadata about the movie including directors, actors, writers and awards
