@@ -1,5 +1,5 @@
-## Playing with Bayes Theory
-I created a few simulations to demonstrate Bayes Theory
+## Simulating Bayesian Inference
+I created a few simulations to demonstrate Bayesian Inference
 - The trade-offs between the power of a test, the significance,
   sample size and detectable effect size
 - Bayesian updating to calculate outcomes as a probabilistic distribution (posterior) 
