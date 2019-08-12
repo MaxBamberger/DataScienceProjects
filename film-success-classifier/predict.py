@@ -25,7 +25,31 @@ from sklearn.preprocessing import MultiLabelBinarizer
 
 
 class Predict:
+    '''
+    Predict Class.
+    Creates object with methods for transforming one test-record (one-row pandas dataframe into a
+    format for making a prediction against a train classifier. Called by the web-app.py for predicting user inputted data.
 
+    Type:  object
+
+    inputs
+    ------
+    test_data: dict
+
+    methods
+    -------
+    initial_transform()
+    add_star_power()
+    add_writer_power()
+    add_director_power()
+    last_movie_award()
+    top_production_score()
+    add_chem_factor()
+    topic_model()
+    finalize_for_model(trained_model)
+    predict_one(trained_model, thresh=0.5)
+
+    '''
     def __init__(self, test_data):
         self.keywords = None
         self.test_data = pd.Series(test_data).to_frame().transpose()
@@ -80,7 +104,10 @@ class Predict:
         self.test_data = df1
 
     def add_star_power(self, actor_pop_scores):
-
+        '''
+        Adds a metric to the transformed data that measures a movies' 'star-power' score
+        based on previous results
+        '''
         df1=self.test_data.copy()
         actors = df1.loc[0,'actors']
         star_power_actors = []
@@ -97,7 +124,10 @@ class Predict:
         return output
 
     def add_writer_power(self,writer_pop_scores ):
-
+        '''
+        Adds a metric to the transformed data that measures the success of the movie's writer / staff
+        based on previous results
+        '''
         df1=self.test_data.copy()
         writers = df1.loc[0,'writer']
         star_power_writers = []
@@ -132,7 +162,9 @@ class Predict:
         return output
 
     def last_movie_award(self, director_awards, actor_awards, writer_awards):
-
+        '''
+        Add a metric that accounts for any awards given to the last movie that the director came out with
+        '''
         df1=self.test_data.copy()
 
         directors = df1.loc[0,'director']
@@ -184,7 +216,18 @@ class Predict:
         return output
 
     def top_production_score(self):
-
+        '''
+        Makes a feature that is based off the movies' production companies having status as a 'top production house'
+        A 'top production company' is defined here as having over 50 titles produced and has succeeded over 60% of the time
+        
+        input
+        -----
+        self
+        
+        output
+        ------
+        output: str. print messages for the web-app explanation page 
+        '''
         df1=self.test_data.copy()
 
         top_prod_companies = ['Universal Pictures','20th Century Fox','Paramount Pictures'
@@ -200,7 +243,19 @@ class Predict:
         return output
 
     def add_chem_factor(self, movie_crew_matrix):
-
+        '''
+        Adds a metric that scores the film by the amount of 'chemistry' between members of the cast.
+        The scoring metric is a ratio of a count of the number of successful films were worked on by exhaustive pairs
+        within the crew-set (includes the director and all of the actors) and total number of crew members
+                
+        input
+        -----
+        self
+        
+        output
+        ------
+        output: str. print messages for the web-app explanation page 
+        '''
         df1=self.test_data.copy()
         masterOutput = ''
         #initialize a crew column for the df:
@@ -255,7 +310,21 @@ class Predict:
         return masterOutput
 
     def topic_model(self, dictionary, trained_token_list, lda_model):
-
+        '''
+        Processes the plot and tagline into and adds percentage contribution to each of the 
+        topics in the lda_model -- produced from topic_model.py.
+        
+        input
+        -----
+        dictionary: Gensim Dictionary object. From corpora.Dictionary(trained_token_list) in topic_model.py. pickled object
+        trained_token_list: list of lists of processed tokens. Created from topic_model.py pickled object
+        lda_model: Gensim ldamodel object created from topic_model.py model pickled object
+        
+        
+        output
+        ------
+        output: str. print messages for the web-app explanation page 
+        '''
         masterOutput = ''
         output = '--Calculating plot text\'s contribution into Topics Modeled..'
         print(output)
@@ -308,10 +377,6 @@ class Predict:
 
 
     def _preprocess(self, text, min_tok_len = 1):
-        '''
-        Extract plot text and turn into a list of lists of tokens
-        '''
-        
         stop_words = set(nltk.corpus.stopwords.words('english'))
         lemm_stemm = lambda tok: WordNetLemmatizer().lemmatize(tok, pos='v')
 
@@ -353,7 +418,17 @@ class Predict:
             return [bigram_mod[tok] for doc in tokens]
 
     def finalize_for_model(self,model):
-
+        '''
+        Format the test dataframe into the same format as the trained format so it can be used to predict
+        
+        input
+        -----
+        model: sklearn pickled object trained model from build_model2.py
+        
+        output
+        ------
+        output: str. print messages for the web-app explanation page 
+        '''
         df1=self.test_data.copy()
 
 
@@ -389,7 +464,17 @@ class Predict:
         print('--Data Transformation is complete! Predicting outcome..\n')
 
     def predict_one(self, trained_model, thresh=0.5):
-
+        '''
+        Makes a prediction from on the test data using the trained model object in build_model2.py 
+        
+        input
+        -----
+        model: sklearn pickled object trained model from build_model2.py
+        
+        output
+        ------
+        output: str. print messages for the web-app explanation page 
+        '''
         classes = [thresh, ((1-thresh)/4)+thresh,((1-thresh)/4)*2+thresh, ((1-thresh)/4)*3+thresh]
         pred_proba = trained_model.predict_proba(self.X_test)[0,1]
         pred = trained_model.predict(self.X_test)
