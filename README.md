@@ -1,5 +1,5 @@
 # DataScienceProjects
-Welcome! This is a collection of great Machine Learning projects and Natural Language Processing projects I have completed for clients or as part of my independent research. More to come as I clean up some projects
+Welcome! This is a collection of some great Machine Learning and Natural Language Processing projects to be used as demonstration or a proof of concept. Feel free to fork or reach out to me if any questions. More to come as I clean up some code..
 
 ## Table of Contents
  - [Predicting movie success](https://github.com/MaxBamberger/DataScienceProjects/tree/master/film-success-classifier) using a GradientBoosting classifier and Latent Dirichlet Allocation (LDA) to Topic-Model the plot-synopsis
