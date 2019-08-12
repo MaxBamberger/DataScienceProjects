@@ -10,6 +10,6 @@ Welcome! This is a collection of great Machine Learning projects and Natural Lan
  ## Coming Soon
  - Detecting Fraud using XGBoost / Random Forest 
  - Predicting Customer Churn amongst users of a ridesharing app  
- - Image Processing and classification using sci-kit image
+ - Image Processing and classification using sci-kit image and Tensorflow
  
 
