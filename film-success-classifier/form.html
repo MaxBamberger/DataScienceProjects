@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Fame or Flop? Film Success Predictive Model - Input Page</title>
+<link rel="stylesheet" type="text/css" href="static/view.css" media="all">
+<script type="text/javascript" src="static/view.js"></script>
+<script type="text/javascript" src="static/calendar.js"></script>
+</head>
+<body id="main_body" >
+
+	<img id="top" src="static/top.png" alt="">
+	<div id="form_container">
+
+		<h1><a>Welcome to The Film Success Prediction Model Input Page</a></h1>
+		<form id="form_76740" class="appnitro"  action="/model_predict" method="POST">
+					<div class="form_description">
+			<h2>Welcome to The Film Success Prediction Model Input Page</h2>
+			<p>Please fill in the form below with attributes from your movie</p>
+			<p><a href="https://github.com/MaxBamberger/DataScienceProjects/tree/master/film-success-classifier">Learn more about the model that's being applied</a></p>
+		</div>
+			<ul >
+
+					<li id="li_19" >
+		<label class="description" for="element_19">Title </label>
+		<div>
+			<input id="element_19" name="element_19" class="element text medium" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_19"><small>Movie Title</small></p>
+		</li>		<li id="li_2" >
+		<label class="description" for="element_2">Belongs to a Collection </label>
+		<span>
+			<input id="element_2_1" name="element_2" class="element radio" type="radio" value="1" />
+<label class="choice" for="element_2_1">True</label>
+<input id="element_2_2" name="element_2" class="element radio" type="radio" value="2" />
+<label class="choice" for="element_2_2">False</label>
+
+		</span>
+		</li>		<li id="li_6" >
+		<label class="description" for="element_6">Production Budget </label>
+		<span class="symbol">$</span>
+		<span>
+			<input id="element_6_1" name="element_6_1" class="element text currency" size="10" value="" type="text" /> .
+			<label for="element_6_1">Dollars</label>
+		</span>
+		<span>
+			<input id="element_6_2" name="element_6_2" class="element text" size="2" maxlength="2" value="" type="text" />
+			<label for="element_6_2">Cents</label>
+		</span>
+		<p class="guidelines" id="guide_6"><small>Note: for accurate results keep your budget within the range of $150000 to $400000000)</small></p>
+		</li>
+
+		<li id="li_3" >
+		<label class="description" for="element_3">Genres </label>
+		<div>
+			<input id="element_3" name="element_3" class="element text large" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_3"><small>Comma separated values for Genres of the film. (For example:  'Action, Adventure, Biography, Comedy, Crime, Drama, Family, Fantasy, Film-Noir, History, Horror')</small></p>
+		</li>		<li id="li_8" >
+		<label class="description" for="element_8">Production Companies </label>
+		<div>
+			<input id="element_8" name="element_8" class="element text large" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_8"><small>List the studios that are producing (comma separated, for example: '20th Century Fox, Buena Vista, Paramount Pictures')</small></p>
+		</li>		<p>&nbsp;</p>
+        <li id="li_7" >
+		<label class="description" for="element_7">Production Countries </label>
+        <p><a href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes">List of ISO 3166 country codes</a></p>
+		<div>
+			<input id="element_7" name="element_7" class="element text large" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_7"><small>List the two digit country codes for countries in which the film was produced (comma separated, for example: 'US, UK, HK'</small></p>
+			
+		</li>		<p>&nbsp;</p>
+        <li id="li_5" >
+		<label class="description" for="element_5">Original Language </label>
+        <p><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">List of ISO 639-1 language codes</a></p>
+		<div>
+			<input id="element_5" name="element_5" class="element text medium" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_5"><small>Two letter ISO-639-1 language code representing the original language of movie (for example: 'en' for english, 'es' for espanol, 'fr' for french) </small></p>
+			
+		</li>		<p>&nbsp;</p>
+        <li id="li_4" >
+		<label class="description" for="element_4">Spoken Languages </label>
+        <p><a href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">List of ISO 639-1 language codes</a></p>
+		<div>
+			<input id="element_4" name="element_4" class="element text medium" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_4"><small>Comma separated values with two letters representing the ISO 3166 language codes into which the movie was translated (for example: 'en, fr, es')</small></p>
+		
+		</li>		<p>&nbsp;</p>		<li id="li_9" >
+		<label class="description" for="element_9">Release Date </label>
+		<span>
+			<input id="element_9_1" name="element_9_1" class="element text" size="2" maxlength="2" value="" type="text"> /
+			<label for="element_9_1">MM</label>
+		</span>
+		<span>
+			<input id="element_9_2" name="element_9_2" class="element text" size="2" maxlength="2" value="" type="text"> /
+			<label for="element_9_2">DD</label>
+		</span>
+		<span>
+	 		<input id="element_9_3" name="element_9_3" class="element text" size="4" maxlength="4" value="" type="text">
+			<label for="element_9_3">YYYY</label>
+		</span>
+
+		<span id="calendar_9">
+			<img id="cal_img_9" class="datepicker" src="static/calendar.gif" alt="Pick a date.">
+		</span>
+		<script type="text/javascript">
+			Calendar.setup({
+			inputField	 : "element_9_3",
+			baseField    : "element_9",
+			displayArea  : "calendar_9",
+			button		 : "cal_img_9",
+			ifFormat	 : "%B %e, %Y",
+			onSelect	 : selectDate
+			});
+		</script>
+
+		</li>		<li id="li_10" >
+		<label class="description" for="element_10">Runtime (in minutes) </label>
+		<div>
+			<input id="element_10" name="element_10" class="element text medium" type="text" maxlength="255" value=""/>
+		</div>
+		</li>		<li id="li_11" >
+		<label class="description" for="element_11">30 day Proximity to other releases </label>
+		<div>
+			<input id="element_11" name="element_11" class="element text medium" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_11"><small>How many other movies are planning on releasing or have released within 30 days of your release date?</small></p>
+		</li>		<li id="li_18" >
+		<label class="description" for="element_18">MPAA Rating </label>
+		<div>
+		<select class="element select medium" id="element_18" name="element_18">
+			<option value="" selected="selected"></option>
+<option value="G" >G</option>
+<option value="PG" >PG</option>
+<option value="PG-13" >PG-13</option>
+<option value="R" >R</option>
+<option value="NC-17" >NC-17</option>
+<option value="NOT RATED" >NOT RATED</option>
+
+		</select>
+		</div>
+		</li>		<li id="li_12" >
+		<label class="description" for="element_12">Director(s) </label>
+		<div>
+			<input id="element_12" name="element_12" class="element text medium" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_12"><small>Director name. Case and spelling sensitive -- please capitalize the first letters of their first and last name. Please comma separate if more than one.</small></p>
+		</li>		<li id="li_13" >
+		<label class="description" for="element_13">Writer(s) </label>
+		<div>
+			<input id="element_13" name="element_13" class="element text medium" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_13"><small>Lead writers names. Case and spelling sensitive -- please capitalize the first letters of their first and last name. Please comma separate if more than one.</small></p>
+		</li>		<li id="li_14" >
+		<label class="description" for="element_14">Lead actors </label>
+		<div>
+			<input id="element_14" name="element_14" class="element text large" type="text" maxlength="255" value=""/>
+		</div><p class="guidelines" id="guide_14"><small>Lead actors names. Case and spelling sensitive -- please capitalize the first letters of their first and last name. Please comma separate if more than one.</small></p>
+		</li>		<li id="li_15" >
+		<label class="description" for="element_15">Plot Synopsis (this will be used for Topic Modeling, the more text the better!) </label>
+		<div>
+			<textarea id="element_15" name="element_15" class="element textarea medium"></textarea>
+		</div>
+		</li>		<li id="li_16" >
+		<label class="description" for="element_16">Tagline (also used for Topic Modeling) </label>
+		<div>
+			<textarea id="element_16" name="element_16" class="element textarea medium"></textarea>
+		</div>
+		</li>		<li id="li_17" >
+		<label class="description" for="element_17">Average Revenue in the Film Industry Last Year </label>
+		<span class="symbol">$</span>
+		<span>
+			<input id="element_17_1" name="element_17_1" class="element text currency" size="10" value="" type="text" /> .
+			<label for="element_17_1">Dollars</label>
+		</span>
+		<span>
+			<input id="element_17_2" name="element_17_2" class="element text" size="2" maxlength="2" value="" type="text" />
+			<label for="element_17_2">Cents</label>
+		</span>
+		<p class="guidelines" id="guide_15"><small>Note: the average revenue in the film industry in 2019 was around $120000000.</small></p>
+		</li>
+
+					<li class="buttons">
+			    <input type="hidden" name="form_id" value="76740" />
+
+				<input id="saveForm" class="button_text" type="submit" name="submit" value="Submit" />
+		</li>
+		<p>After hitting submit, be patient friend :-). Prediction generally takes about 30 Seconds</p>
+			</ul>
+		</form>
+	</div>
+	<img id="bottom" src="static/bottom.png" alt="">
+	</body>
+</html>
