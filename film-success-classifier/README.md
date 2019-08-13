@@ -1,4 +1,4 @@
-# Fame or Flop? 
+# CinemAlpha: 
 ## Predicting the Success of a Film Using Natural Language Processing (LDA) and Machine Learning
 
 Hollywood is a ruthless business. Achieving success in industry this means everything one could want in life: fame, fortune, legacy and adoration. But the stakes are high: 
