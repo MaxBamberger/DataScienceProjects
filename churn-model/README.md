@@ -12,8 +12,8 @@ Finding which features correlate closely with churn classification is not easy..
 ![image](output_graphs/Scatter matrix.png)
 
 Thanks to Gradient Boosting and Random Forest, we can still make predictions fairly accurately. 
-![image](roc_curve.png)
+![image](output_graphs/roc_curve.png)
 
 Based on feature importance, we can learn what factors might contribute more to churn than others, and thus may inform what action to take to keep those customers..
-![image](output_graphs/figure_2.png)
-![image](output_graphs/figure_1.png)
+![image](output_graphs/Figure_2.png)
+![image](output_graphs/Figure_1.png)
