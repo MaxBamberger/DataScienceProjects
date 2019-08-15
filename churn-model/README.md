@@ -1,4 +1,4 @@
-## Case Study
+## Churn Prediction
 
 Many businesses these days are subscription-based. Even some businesses that aren't charging customers periodically still rely on the continuous engagement of their customers which is ineffect follows a similar model as 'subscription'.
 
