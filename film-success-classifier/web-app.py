@@ -43,7 +43,7 @@ def input():
 @app.route('/model_predict', methods=['POST'] )
 def predict():
     title = request.form['element_19']
-    belongs_to_collection = bool(request.form['element_2'])
+    belongs_to_collection = bool(True if int(request.form['element_2']) == 1 else False)
     budget = int(float(request.form['element_6_1']+'.'+request.form['element_6_2']))
     genre = str(request.form['element_3']).lower()
     orig_lang = str(request.form['element_5']).lower()
@@ -86,7 +86,7 @@ def predict():
     print('')
     pred = Predict(test_data)
     output = []
-    pred.initial_transform()
+    output.append(pred.initial_transform())
     output.append(pred.add_star_power(actor_pop_scores=model.actor_pop_scores))
     output.append(pred.add_writer_power(writer_pop_scores = model.writer_pop_scores))
     output.append(pred.add_director_power(director_pop_score = model.director_pop_score))
@@ -145,7 +145,7 @@ def predict():
                 <p>&nbsp;</p>
                 <p><a href="https://github.com/MaxBamberger/DataScienceProjects/tree/master/film-success-classifier">Learn more about the model that's being applied</a></p>
                 <p>&nbsp;</p>
-                <p><a href="http://3.224.227.110:8080">Try Another Movie Prediction (Don't Click Your Browser's Back Button)</a></p>
+                <p><a href="http://3.224.227.110:8080">Try Another Movie Prediction</a></p>
              '''.format(pred.pred_perc, pred.pred_label, pred.advice, pred.keywords)
 
 @app.route('/explain_prediction', methods=['GET'] )
