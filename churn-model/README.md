@@ -1,6 +1,6 @@
 ## Churn Prediction
 
-Many businesses these days are subscription-based. Even some businesses that aren't charging customers periodically still rely on the continuous engagement of their customers which is ineffect follows a similar model as 'subscription'.
+Many businesses these days are subscription-based. Even some businesses that aren't charging customers periodically still rely on the continuous engagement of their customers which is ineffect following a similar model.
 
 All subscription-modeled enterprises fear the same threat: churn. Losing a subscribed customer is often much more costly than offering deep promotions to keep them.. as gaining new subscribers is not always so easy. Thus knowing which customers are in danger of churning is vital to the success of their business.
 
