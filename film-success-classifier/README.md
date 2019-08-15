@@ -15,7 +15,7 @@ You can try [making a prediction](http://3.224.227.110:8080/) on a future movie 
 (Put together for demonstration purposes only. I never claimed to be a great web-developer :))
 
 ## About the model itself:
-Success is defined as a movie that has a positive profit. Profit is calculated as an industry 'rule of thumb' metric 3 times the production budget, to accomodate for distribution costs that come off of the top line: 
+Success is defined as a movie that has a positive profit. Profit is calculated as revenue minus 3x the production budget, an industry 'rule of thumb' to accomodate for distribution costs that come off of the top line: 
 
 ```Profit = Revenue - (3 * Production_Budget)```
 
