@@ -25,11 +25,11 @@ from sklearn.model_selection import (train_test_split,
                                     KFold,
                                     cross_val_score)
 
-from data_cleaner_and_visualizer import (run_cv,
-                                         auto_dummy,
-                                         googone,
-                                         plot_classification_scatter,
-                                         feature_graph)
+from helper_functions import (run_cv,
+                             auto_dummy,
+                             googone,
+                             plot_classification_scatter,
+                             feature_graph)
 
 #Import Data:
 df_raw_train = pd.read_csv('data/churn_train.csv')
