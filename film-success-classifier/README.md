@@ -6,7 +6,7 @@ Hollywood is a ruthless business. Achieving success in industry this means every
 
 **What if you could know with more certainty if a movie has a real shot at success before your money is sunk?**
 
-Lot's of people complain that "movies these days are so formuliac".. Well, there may be some truth to that statement. I've set out to create a machine learning classification system that -- when trained with over 7000+ films throughout history -- gets to the bottom of what this formula is.
+Lot's of people complain that "movies these days are so formuliac".. Well, there may be some truth to that statement. I've set out to create a machine learning classification system that --- when trained with over 7000+ films throughout history --- gets to the bottom of what this formula is.
 
 *for more information on the project and use case and solution architecture, see [powerpoint](https://github.com/MaxBamberger/DataScienceProjects/blob/master/film-success-classifier/movie_prediction_model-compressed.pdf)*
 
