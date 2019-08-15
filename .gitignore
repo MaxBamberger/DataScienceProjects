@@ -29,4 +29,4 @@ Thumbs.db
 # Don't track content of these folders
 too_large/
 archive/
-data/
+#data/
