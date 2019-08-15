@@ -16,8 +16,6 @@ Using a [Non-Negative Matrx Factorization](https://en.wikipedia.org/wiki/Non-neg
 
 This works decently well to fill in recommendations, however it cannot be applied for new-movies and new-users. This is known as a cold-start issue. To remedy the cold-start issue, I use a popularity algorithm for new users and an NLP-based content similarity algorithm for new-movies. 
 
-The test data streams in via an API. To retreive new test data and demonstrate -- 
-
 ## Note on running the solution
 `recommender.py` script relies on spark, you may want to use the script `run_on_spark.sh` to execute the code or 
 
