@@ -33,7 +33,8 @@ The main success/failure and predicted probability is performed with a Gradient 
 
 
 ### Model scoring:
- - Receiver Operating Characteristic (ROC) curve. As you can see is decently accurate but there is room for improvement: 
+ - Receiver Operating Characteristic (ROC) curve. As you can see is decently accurate but there is room for improvement
+ (When scoring the model, please make sure to use a TimeSeries split (after sorting by `release_date`).. as cross validation without respect to temporal dependencies will cause data leakage and falsely inflated scores): 
 ![image](images/Figure_10.png)
  - Cross-validated confusion Matrix (how often false-positives / false-negatives vs. correct predictions occur) :
  
