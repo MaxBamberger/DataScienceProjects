@@ -19,7 +19,7 @@ Success is defined as a movie that has a positive profit. Profit is calculated a
 
 ```Profit = Revenue - (3 * Production_Budget)```
 
-The main success/failure and predicted probability is performed with a Gradient Boosting algorithm, however textual data such as the plot synopsis, tagline etc. is fed to a Latent Drichlet Allocation for Topic Modeling. Typically the best Coherence value for training data of this size is found with just 20 topics. These topics (and each movie's % contribution to them) are fed back into the Boosting classifier as new features. The General pipeline is as follows:
+The main success/failure and predicted probability is performed with a Gradient Boosting algorithm, however textual data such as the plot synopsis, tagline etc. is fed to a Latent Drichlet Allocation for Topic Modeling. Typically the best Coherence value for training data of this size is found with just 11 topics. These topics (and each movie's % contribution to them) are fed back into the Boosting classifier as new features. The General pipeline is as follows:
  - 1000's of records of film metadata is ingested through two public APIs (see below). data is cleaned and success labels are applied
  - New features are engineered such as:
     - Director/Writer/Actor popularity
