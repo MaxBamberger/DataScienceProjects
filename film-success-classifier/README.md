@@ -23,7 +23,7 @@ The main success/failure and predicted probability is performed with a Gradient 
  - 1000's of records of film metadata is ingested through two public APIs (see below). data is cleaned and success labels are applied
  - New features are engineered such as:
     - Director/Writer/Actor popularity
-    - Acedemy Performance of last movie
+    - Max Acedemy Performance of each cast-member's last movie
     - Studio Performance
     - Historical Chemistry between actors and directors
     - Release proximity to other film's releases
