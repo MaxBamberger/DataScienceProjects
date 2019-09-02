@@ -8,7 +8,7 @@ Hollywood is a ruthless business. Achieving success in show biz means fame, fort
 
 Lot's of people complain that "movies these days are so formuliac".. Well, there may be some truth to that statement. I've set out to create a machine learning classification system that --- when trained with over 7000+ films throughout history --- gets to the bottom of what this formula is.
 
-*For more information on the project, use case and solution architecture, see [my powerpoint](https://github.com/MaxBamberger/DataScienceProjects/blob/master/film-success-classifier/movie_prediction_model-compressed.pdf)*
+*For more information on the project, use case and solution architecture, see [my powerpoint](https://github.com/MaxBamberger/DataScienceProjects/blob/master/film-success-classifier/movie_prediction_model-compressedv2.pdf)*
 
 ## Try it out! 
 You can try [making a prediction](http://input.cinemalpha.com) on a future movie with the web-app - a UI I put together that uses my predict.py engine to make a prediction on customized data.. 
