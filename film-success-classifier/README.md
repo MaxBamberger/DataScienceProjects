@@ -1,7 +1,7 @@
 # ![image](images/CinemAlpha-1.png)
 ## Predicting the Success of a Film Using Natural Language Processing (LDA) and Machine Learning
 
-Hollywood is a ruthless business. Achieving success in industry this means everything one could want in life: fame, fortune, legacy and adoration. But the stakes are high: 
+Hollywood is a ruthless business. Achieving success in show biz means fame, fortune, legacy and adoration. But the stakes are high: 
 70% of movies that are made have a negative ROI.. Meaning they lose money for the original production studios. Many producers, writers and actors struggle their entire life in vain for just a small glimmer of the limelight.
 
 **What if you could know with more certainty if a movie has a real shot at success before your money is sunk?**
