@@ -51,7 +51,7 @@ Finally, the main engine that’s powering our predictions is a Naïve Bayes cla
 Essentially, the classifier makes a (rather naïve) assumption that every word independently contributes to the overall probability of class. In this case, x is a vector transformed by the words in each document and c is our sentiment class ‘Negative’, ‘Neutral’ or ‘Positive’. To predict a class for given a document, we simply calculate the posterior probabilities for each class c and see which class has the highest. For example calculating the negative sentiment probability for a given document with n words:
 
 
-$P\left(negative\middle|\vec{x}\right)\ \propto P\left({word}_1\ \right|\ negative)\ \times\ldots\times P\left({word}_n\ \right|\ negative)\ \times P(negative)$
+P(negative\vbar x\ \vec\ )\ \ \propto P(\begin word〗_1  ┤|  negative) ×…×P(〖word〗_n  ┤|  negative) ×P(negative)
 
 
 Where the prior P(negative) is the observed class probability amongst the training data. To estimate P(wi|c) we conceptually use the observed word’s frequency:
