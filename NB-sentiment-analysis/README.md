@@ -14,10 +14,7 @@ The data consists of Urdu-transliterated sentences gathered from various sources
 # Methodology
 Most ML/DL problems involving NLP can be represented by a series of these general steps called a data pipeline.
 
-
-
-
-
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture2.png)
 
 In our case, the steps are simplified and less extensive due to the limitations of the dataset but we can still follow this framework all the same. 
 
@@ -37,19 +34,24 @@ Overall the goal here is to boil each document of text down to just their essent
 
 Unfortunately, no such autonomous technique exists for Roman-Urdu that I’m aware of, without fluency in the language so we’ll skip that for now.
 
-Vectorization
+## Vectorization
 Once our corpus is fully processed into a list of lists of tokens the next step is to vectorize our documents into numeric values so that our classifier can understand and run computation. In this case we’re going to use a sparse TF-IDF matrix with each word in the overall vocabulary as a column and each document as a row (depending upon how we tweak the model the shape of the matrix is around [18106 x 31046]). The value at each element of the matrix is the 
-term frequency * log inverse of the document frequency. Thus, it increases number of times a word appears in a document and is offset by the number of documents the word appears in the overall corpus. Scikit-Learn comes with a great function for doing this:
+term frequency * log inverse of the document frequency. Thus, it increases number of times a word appears in a document and is offset by the number of documents the word appears in the overall corpus. 
 
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture3.png)
 
-We can tweak these hyperparameters carefully as they have a direct effect on our classifier’s ability to predict sentiment in the next step. The most important hyperparameter I found useful for optimizing this dataset was max_df: this specifies the maximum document frequency of a given word. If exceeded, the word is omitted.  
+Scikit-Learn comes with a great function for doing this *TfidfVectorizer()*
+Whose hyperparameters we can tweak carefully as they have a direct effect on our classifier’s ability to predict sentiment in the next step. The most important hyperparameter I found useful for optimizing this dataset was *max_df*: this specifies the maximum document frequency of a given word. If exceeded, the word is omitted.  
 
 # Naïve Bayes Classifier
 Finally, the main engine that’s powering our predictions is a Naïve Bayes classifier: a simple yet effective method used in many common text classification use cases like spam filtering. The math behind how it works is rooted in Bayes theorem:
+
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture4.png)
+
 Essentially, the classifier makes a (rather naïve) assumption that every word independently contributes to the overall probability of class. In this case, x is a vector transformed by the words in each document and c is our sentiment class ‘Negative’, ‘Neutral’ or ‘Positive’. To predict a class for given a document, we simply calculate the posterior probabilities for each class c and see which class has the highest. For example calculating the negative sentiment probability for a given document with n words:
 
 
-P\left(negative\middle|\vec{x}\right)\ \propto P\left({word}_1\ \right|\ negative)\ \times\ldots\times P\left({word}_n\ \right|\ negative)\ \times P(negative)
+$P\left(negative\middle|\vec{x}\right)\ \propto P\left({word}_1\ \right|\ negative)\ \times\ldots\times P\left({word}_n\ \right|\ negative)\ \times P(negative)$
 
 
 Where the prior P(negative) is the observed class probability amongst the training data. To estimate P(wi|c) we conceptually use the observed word’s frequency:
