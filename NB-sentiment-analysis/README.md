@@ -9,6 +9,7 @@ In this case, the business is a multinational corporation seeking to automatical
 # The Dataset
 The data consists of Urdu-transliterated sentences gathered from various sources including social media and reviews of products on ecommerce sites. Each row ideally consists of a single sentence and has a corresponding sentiment attached to it that is one of three values: ‘Negative’, ‘Positive’ or ‘Neutral’. There are more than 20,000 sentences that have been manually tagged, and some of the data is inconsistent.
 
+!image[https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture1.png]
 
 # Methodology
 Most ML/DL problems involving NLP can be represented by a series of these general steps called a data pipeline.
