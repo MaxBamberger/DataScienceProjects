@@ -50,25 +50,21 @@ Finally, the main engine that’s powering our predictions is a Naïve Bayes cla
 
 Essentially, the classifier makes a (rather naïve) assumption that every word independently contributes to the overall probability of class. In this case, x is a vector transformed by the words in each document and c is our sentiment class ‘Negative’, ‘Neutral’ or ‘Positive’. To predict a class for given a document, we simply calculate the posterior probabilities for each class c and see which class has the highest. For example calculating the negative sentiment probability for a given document with n words:
 
-
-P(negative\vbar x\ \vec\ )\ \ \propto P(\begin word〗_1  ┤|  negative) ×…×P(〖word〗_n  ┤|  negative) ×P(negative)
-
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture5.png)
 
 Where the prior P(negative) is the observed class probability amongst the training data. To estimate P(wi|c) we conceptually use the observed word’s frequency:
 
-\frac{N_{ji}}{N_j}=\frac{total\ count\ of\ word\ w_i\ across\ all\ documents\ of\ class\ c}{total\ count\ of\ all\ words\ across\ all\ the\ documents}
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture6.png)
 
 This is represented for us by the TF-IDF vectorization.
 
 We also employ a Laplacing smoothing constant \alpha to avoid calculating 0 when we run into a new word that’s not found in the training data a P(c | wi )
 
-P\left(w_i\middle| c\right)=\frac{\alpha+D_{ij}}{\alpha p+N_{ij}}
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture7.png)
 
 An alpha = ~0.25 in our case gives us the highest accuracy. Along with the TF-IDF Vectorizer parameters, this can be tuned with an exhaustive grid search.
 
-clf = MultinomialNB(alpha=0.25)
-
-Cross Validation
+## Cross Validation
 To evaluate our data we make a number of Training and Test-set splits in our data using a Stratified KFold function that shuffles and evenly distributes the classes amongst the training and test sets. At each split we fit and transform the document (X_train) values into our TF-IDF vector then fit those values to the classifier using the target classes (y_train) as our supervised targets. We then separately transform the hold-out document set (X_test) into our fitted TF-IDF vector and use it as input for making predictions on our pre-fitted classifier. An evaluation metric is calculated for the split and the process is repeated for the next split. Since the classifier doesn’t take very long to train and a higher number of splits means more data to train on, a relatively high number of splits such as 20 is appropriate here. This will roughly keep our training data to about 20000 documents and test data to about 1000.
 
 
@@ -80,53 +76,53 @@ Since our data has three target classes that are evenly distributed, the best me
 This is a harsh metric since you require that each label set be correctly predicted for every sample. With the right parameters were able to achieve an accuracy of ~65%, representing a more than 30% boost over randomly guessing a class label. 
 Accuracy is not everything though.  Revisiting the problem statement: there is special interest in being able to accurately detect negative sentiment. Examining our confusion matrix:
 
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture9.png)
+
 We see that only 46% of negative sentiment labels (-1) are predicted correctly, with 44% of them getting misclassified as neutral sentiment. One way to mitigate this (albeit a little ‘hacky’) is to look at the calculated probabilities for each prediction and insert some bias. The prediction always goes to the class that has greatest probability, but we can manipulate our thresholds so that wherever we have a ‘close call’ between a neutral and negative probability we favor negative. For example for a given prediction \hat{y}:
 
-
-\hat{y}\ =\ [0.3242, 0.3620, 0.3138]
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture10.png)
 
 If we manipulate our thresholds so that the neutral value has to surpass the negative probability by 0.05 when it’s the largest probability, we may be able to build a classification system that is more sensitive to finding true negative classes. In this example since the differences in probability between the negative and neutral class so close (less than our 0.05 threshold), give this prediction to the negative class.
 
 There are other metrics that are better suited for classification evaluation, such as Recall, Precision and F1 score, but those apply only to a binary classification problem. Which brings us to our next point…
 
 
-Resampling and Mitigating Class Imbalance 
+# Resampling and Mitigating Class Imbalance 
 Missing over half the negative sentiments is really not acceptable; and since it is really just negative sentiment we’re hoping to detect, what if we changed our problem to a binary classification? This will enable us to use some additional classification evaluation metrics:
 
-	Recall or Sensitivity or TPR (True Positive Rate): Number of items correctly identified as positive out of total true positives: \left(TP\right)/\left(TP+FN\right) Intuitively this is our model’s ability to find all of the positive classes
-	Precision: Number of items correctly identified as positive out of total items identified as positive (TP)/\left(TP+FP\right). Intuitively this is our models ability to avoid false positives
-	F1 Score: It is a harmonic mean of precision and recall given by
+	* Recall or Sensitivity or TPR (True Positive Rate): Number of items correctly identified as positive out of total true positives: \left(TP\right)/\left(TP+FN\right) Intuitively this is our model’s ability to find all of the positive classes
+	* Precision: Number of items correctly identified as positive out of total items identified as positive (TP)/\left(TP+FP\right). Intuitively this is our models ability to avoid false positives
+	* F1 Score: It is a harmonic mean of precision and recall given by
  \left(2\times P r e c i s i o n\times R e c a l l\right)/\left(Precision+Recall\right)
-	ROC AUC: Area under curve of sensitivity (TPR) vs. FPR (1-specificity)
+	* ROC AUC: Area under curve of sensitivity (TPR) vs. FPR (1-specificity)
 
 
 There are a few scenarios we can explore where we manipulate our dataset to make the problem binary…
 
-Alternative Scenario 1: Drop all the Neutrals
-
- 
+## Alternative Scenario 1: Drop all the Neutrals
 
 Dropping the neutral values on the onset of the problem will help us to train on only the extreme sentiments ‘positive’ and ‘negative’. Since ‘negative’ classes are what were after, we’re going to map our negative values to 1. Thus a ‘true positive’ means correctly classifying a negative sentiment, and a ‘false positive’ means misclassifying a truly positive sentiment as a negative sentiment. Though it may sound confusing, the reason we do this is to orient the Precision score and Recall score to be a measurement of how well we can detect negative sentiment.
 
 Since the data is well-balanced and clear of ambiguous ‘neutral’ data, our model performs much better
 
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture11.png)
 
 Average Accuracy: 0.7768
- -- Average recall score:  0.7102
- -- Average precision score:  0.7914
- -- Average f1 score:  0.7486
- -- Average roc_auc score:  0.8636
+ * Average recall score:  0.7102
+ * Average precision score:  0.7914
+ * Average f1 score:  0.7486
+ * Average roc_auc score:  0.8636
 
 However, these results are a bit misleading. The real data we'd like to test this model with may have neutral values that could get misclassified. 
 
-Alternative Scenario 2: Convert Neutrals and Positives to the Same Class
+## Alternative Scenario 2: Convert Neutrals and Positives to the Same Class
 In this scenario we naturally consider neutrals and positives to be part of the same class, since we’re only really concerned with negatives. We’ll encode 1 for the Negative class and 0 for the Positive, but we’ve just created a new problem: class imbalance! Class imbalances, when very severe, will cause our classifier to bias the over-weighted side and our accuracy score to become misleading.
   
 Feeding just the imbalanced dataset to our classifier we find that we have an F1 and Recall score of around 0.25 and 0.15 respectively. That’s a pretty poor evaluation but exactly what you might expect when your positive class (which is really the negative sentiment) is in the minority. So how do you fight data imbalance? A common method is to resample by under-representing the majority class in your training set. An even more effective method is to over-sample by generating synthetic data using an algorithm called SMOTE (Synthetic Minority Over-sampling Technique). 
 
 SMOTE uses a technique similar to k-nearest neighbors that randomly generates new artificial values in the surrounding ‘neighbor radius’ of points in vector space of the minority class. There are a number of parameters which you can feed to a grid-search to fine tune.
 
-
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture17.png)
 
 We set our sampling strategy to 1.0 to create perfectly balanced classes. Another parameter we can tweak is k_neighbors which dictates the number of points in the minority class used to create a boundary / radius used to define the space with which the synthetic points can lie.
 
@@ -135,29 +131,33 @@ To avoid data leakage, we do our SMOTE over-sampling ONLY on the training data o
 The results we get are a very slight downtick in accuracy but a significant boost in Recall Score and F1 Scores over the same classification without using a SMOTE synthesizer:
 
 
-
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture12.png)
 
 
 In conclusion, a binary classification with SMOTE gives us our best results and sets us up most realistically for detecting negative sentiment on text data in the wild. To productionize the solution, we can train a model on all of our data and pickle (store) the model as an object to import for making real-time predictions.
 
 
-Addressing Limitations 
+# Addressing Limitations 
 Thinking ahead towards improving the accuracy, we’d first look to the address some limitations of the data and my own lack of familiarity with the language of Urdu:
 
-Inconsistent/Inaccurate labeling. Since some of the data labels have been inconsistently and manually labeled – it’s subject to interpretation. Human intuition can fall short, especially if trying to interpret the mood of someone through text. I would opt to try and augment this process through a topic modeling solution. Many algorithms exist for finding the latent topics of a document such as Latent Drichlet Allocation. Through a topic modeler we can boil down each of our documents into k number of topics that may clue us into the sentiment (for instance, we might learn that that topic x has to do with war which carries a 90% chance of being associated to negative sentiment, while topic y which has to do with family which has a good chance of being positive). A solution like this allows us to revisit sentiment values from both a programmatic and intuitive point of view.
+*Inconsistent/Inaccurate labeling.* Since some of the data labels have been inconsistently and manually labeled – it’s subject to interpretation. Human intuition can fall short, especially if trying to interpret the mood of someone through text. I would opt to try and augment this process through a topic modeling solution. Many algorithms exist for finding the latent topics of a document such as Latent Drichlet Allocation. Through a topic modeler we can boil down each of our documents into k number of topics that may clue us into the sentiment (for instance, we might learn that that topic x has to do with war which carries a 90% chance of being associated to negative sentiment, while topic y which has to do with family which has a good chance of being positive). A solution like this allows us to revisit sentiment values from both a programmatic and intuitive point of view.
 
-Better NLP functionality. I was fortunate enough to find a text file online for Roman-Urdu stop words and some common proper nouns, but the full potential of NLP is far from being realized. If time were no obstacle, we could spend more of it building out a full list of proper nouns, learning parts of speech and even building a lemmatization or stemmatization function for mapping words to their origin. This would also call for much more requisite knowledge of the language of Urdu.
+*Better NLP functionality.* I was fortunate enough to find a text file online for Roman-Urdu stop words and some common proper nouns, but the full potential of NLP is far from being realized. If time were no obstacle, we could spend more of it building out a full list of proper nouns, learning parts of speech and even building a lemmatization or stemmatization function for mapping words to their origin. This would also call for much more requisite knowledge of the language of Urdu.
 
-Limitations of Naïve Bayes. We call our classifier ‘naïve’ because it’s based on the assumption that every word contributes independently to the sentiment. In reality, words are seldom independent of each other. We depend on context clues which is why a more robust deep learning solution would be better long term. 
+*Limitations of Naïve Bayes.* We call our classifier ‘naïve’ because it’s based on the assumption that every word contributes independently to the sentiment. In reality, words are seldom independent of each other. We depend on context clues which is why a more robust deep learning solution would be better long term. 
 
-…Further Optimize Using Deep-Learning
+# …Further Optimize Using Deep-Learning
 Beyond improving the dataset and our technique for pre-processing our text, perhaps the most effective ROI for our time spent would be to use instead a deep learning solution. Long Short-
 Term Memory (LSTM) neural nets are a type of Recurrent Neural Net (RNN) that performs extraordinarily well with sequence data such as time series data or text data. Like all other neural nets, output values are sent from one layer of artificial neurons to another and the output at each layer is computed by some nonlinear function with weights that adjust as learning proceeds. However with an LSTM (and RNNs in general), there is recurrence so that some information can 
 
 
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture13.png)
+
 
 persist while new data enters as input. Where LSTM differs from other traditional RNNs is the complexity of the repeating module within each neuron. 
 
+
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture14.png)
 
 
 The repeating module in an LSTM
@@ -165,12 +165,20 @@ The repeating module in an LSTM
 With this added structure, LSTMs are able to recall and connect to previous information with the current input, whereas a plain RNN could only handle very ‘recent’ information. 
 
 In a way this mimics how we read and process language naturally – we make connections based on contextual dependencies both long and short-term. If we were to predict the next word in any given sentence, it would depend not only on words in that sentence, but the subject matter, the predicate of the previous sentence and maybe even declaratives made at the very beginning of the paragraph.
+
+
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture15.png)
+
+
 To apply an LSTM for this type of problem, we’d have to first change the way we vectorize words. Rather than a sparse matrix of our entire vocabulary, we’d want to set a specific boundary on column dimensions and represent each document as a sequence of word/tokens (maintaining order), padding zeroes when the sentence falls short of the column length and truncating sentences when they run over. Rather than a value based on term frequency each word in the vocab would instead be converted to a unique integer. 
 
 A general architecture and approach to training an LSTM sentiment analyzer is described in the figure on the previous page
 
 Following this approach, building out the neural net with TFLearn (a modular library built on top of Tensorflow) might look like this: 
  
+ 
+![image](https://github.com/MaxBamberger/DataScienceProjects/blob/master/NB-sentiment-analysis/images/Picture16.png)
+
 
 With our input dimensions of the embedding layer matching the output dimensions of the input layer (usually all or an important segment of our vocabulary). The resulting word embeddings are fed to the LSTM layer which we can apply a modest dropout to avoid overfitting. The fully connected layer gets fed the output of the LSTM layer. Adding a fully connected layer is a way of learning non-linear combinations of the feature vectors from all of the neurons in the previous step (with the activation ‘softmax’ giving us probabilities). The final ‘regression’ layer optimizes a given loss function and specifies how fast we want our network to train.
 
