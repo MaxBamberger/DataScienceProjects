@@ -3,6 +3,7 @@ Welcome! This is a collection of some great Machine Learning, Statistical modeli
 
 ## Contents:
  - [Predicting movie success](https://github.com/MaxBamberger/DataScienceProjects/tree/master/film-success-classifier) using a GradientBoosting classifier and Latent Dirichlet Allocation (LDA) to Topic-Model the plot-synopsis
+  - [Sentiment Analysis](https://github.com/MaxBamberger/DataScienceProjects/tree/master/NB-sentiment-analysis) Using a Naive Bayes classifier to learn sentiment from an Roman-Urdu language dataset, plus alternative apporaches including SMOTE for dealing with data imbalances. 
  - [Predicting Customer Churn](https://github.com/MaxBamberger/DataScienceProjects/tree/master/churn-model) amongst users of a ridesharing app  
  - [Movie Recommender System](https://github.com/MaxBamberger/DataScienceProjects/tree/master/movie_recommender_system) (a recommendation system that produces user recommendations based on predicted ratings and processes new movies / users as they onboard.
  - [Bayesian A/B Testing](https://github.com/MaxBamberger/DataScienceProjects/tree/master/exploring-bayes) Bayesian statistical hypothesis testing and a Bayesian Updating demonstration
