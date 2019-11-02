@@ -8,6 +8,7 @@ Welcome! This is a collection of some great Machine Learning, Statistical modeli
  - [Movie Recommender System](https://github.com/MaxBamberger/DataScienceProjects/tree/master/movie_recommender_system) (a recommendation system that produces user recommendations based on predicted ratings and processes new movies / users as they onboard.
  - [Bayesian A/B Testing](https://github.com/MaxBamberger/DataScienceProjects/tree/master/exploring-bayes) Bayesian statistical hypothesis testing and a Bayesian Updating demonstration
  - [Predicting Boston Home Prices](https://github.com/MaxBamberger/DataScienceProjects/blob/master/boston-home-prices/Boston-Home-Prices.ipynb) using three different Boosting Regression models. Demonstrating the effect that Learning Rate has on Boosting Algorithms specifically.
+  - [using google places API](https://github.com/MaxBamberger/DataScienceProjects/tree/master/places-api) though not really a data science project, this is a useful tool for hitting and interacting with the google places API ReSTful service to validate address and location data. I've re-purposed it many times.
  
  ## Coming Soon:
  - Detecting Fraud using XGBoost / Random Forest 
