@@ -1,6 +1,6 @@
 # Movie Recommender System
 
-I built a recommendation system based off data from the
+Recommendation system based off data from the
 [MovieLens dataset](http://grouplens.org/datasets/movielens/). It includes movie
 information, user information, and the users' ratings. The algorithm's goal is to suggest movies to users!
 
