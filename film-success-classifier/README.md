@@ -11,7 +11,7 @@ Lot's of people complain that "movies these days are so formuliac".. Well, there
 *For more information on the project, use case and solution architecture, see [my powerpoint](https://github.com/MaxBamberger/DataScienceProjects/blob/master/film-success-classifier/movie_prediction_model-compressedv2.pdf)*
 
 ## Try it out! 
-You can try [making a prediction](http://input.cinemalpha.com) on a future movie with the web-app - a UI I put together that uses my predict.py engine to make a prediction on customized data.. 
+You can try [making a prediction](http://input.cinemalpha.com) on a future movie with the web-app - a UI I put together that uses my predict.py engine to make a prediction on customized data.. (note: this as since been depricated as of 1/2020)
 (Put together for demonstration purposes only. I never claimed to be a great web-developer :))
 
 ## About the model itself:
